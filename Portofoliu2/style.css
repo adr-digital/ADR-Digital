@@ -1,0 +1,1594 @@
+
+/* ==========================================
+   ADR DIGITAL - STYLE.CSS
+   Versiune curățată și organizată
+========================================== */
+
+/* 1. CULORI ȘI SETĂRI GENERALE */
+
+:root {
+    --bg: #0a0a14;
+    --surface: #121222;
+    --surface-light: #19192d;
+    --text: #f4f3ff;
+    --muted: #a4a3bc;
+    --purple: #a78bfa;
+    --cyan: #67e8f9;
+    --pink: #f0abfc;
+    --gold: #d4af6a;
+    --border: rgba(255, 255, 255, 0.09);
+    --gradient: linear-gradient(110deg, #a78bfa, #67e8f9, #f0abfc);
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 90px;
+}
+
+body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: Inter, "Segoe UI", Arial, sans-serif;
+    line-height: 1.7;
+    overflow-x: hidden;
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    background:
+        radial-gradient(
+            ellipse at 10% 10%,
+            rgba(124, 58, 237, 0.12),
+            transparent 40%
+        ),
+        radial-gradient(
+            ellipse at 90% 40%,
+            rgba(34, 211, 238, 0.07),
+            transparent 35%
+        );
+}
+
+h1, h2, h3, p {
+    margin-top: 0;
+}
+
+p {
+    color: var(--muted);
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+    -webkit-tap-highlight-color: transparent;
+}
+
+button,
+input,
+textarea {
+    font: inherit;
+}
+
+button {
+    -webkit-tap-highlight-color: transparent;
+}
+
+img {
+    display: block;
+    max-width: 100%;
+}
+
+::selection {
+    background: var(--purple);
+    color: #090914;
+}
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+    outline: 2px solid var(--cyan);
+    outline-offset: 4px;
+}
+
+
+/* ==========================================
+   2. HEADER, LOGO ȘI MENIU
+========================================== */
+
+.header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 24px;
+    max-width: 1240px;
+    margin: auto;
+    padding: 20px 30px;
+    background: rgba(10, 10, 20, 0.84);
+    backdrop-filter: blur(18px);
+    border-bottom: 1px solid var(--border);
+}
+
+.logo {
+    display: inline-flex;
+    align-items: center;
+    flex-shrink: 0;
+    font-size: 1.45rem;
+    font-weight: 800;
+}
+
+.logo span {
+    color: var(--purple);
+}
+
+.logo b {
+    color: var(--cyan);
+}
+
+.header a.logo {
+    width: 170px;
+    flex: 0 0 170px;
+}
+
+.header a.logo img.logo-img,
+.header a.logo img.brand-logo {
+    width: 170px;
+    height: auto;
+    max-height: 55px;
+    object-fit: contain;
+}
+
+.nav {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.header .nav a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 18px;
+    border: 1px solid transparent;
+    border-radius: 12px;
+    background: transparent;
+    color: var(--muted);
+    font-size: 0.9rem;
+    font-weight: 600;
+    transition:
+        color 0.3s ease,
+        background 0.3s ease,
+        border-color 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+.header .nav a:hover {
+    color: var(--text);
+    background: rgba(167, 139, 250, 0.08);
+}
+
+/* Chenar auriu numai pe pagina activă */
+
+.header .nav a.active,
+.header .nav a[aria-current="page"] {
+    color: #f8e7b5;
+    background: linear-gradient(
+        135deg,
+        rgba(212, 175, 55, 0.14),
+        rgba(245, 215, 140, 0.06)
+    );
+    border-color: var(--gold);
+    box-shadow: 0 0 12px rgba(212, 175, 106, 0.16);
+}
+
+/* Contact nu mai are chenar permanent */
+
+.header .nav a.nav-cta:not(.active):not([aria-current="page"]) {
+    color: var(--muted);
+    background: transparent;
+    border-color: transparent;
+    box-shadow: none;
+}
+
+.menu-toggle {
+    display: none;
+    padding: 7px 12px;
+    border: 1px solid var(--border);
+    border-radius: 9px;
+    background: var(--surface);
+    color: var(--text);
+    font-size: 1.25rem;
+    cursor: pointer;
+}
+
+
+/* ==========================================
+   3. ELEMENTE REUTILIZABILE
+========================================== */
+
+.gradient-text {
+    color: var(--purple);
+    background: var(--gradient);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.eyebrow {
+    margin-bottom: 18px;
+    color: var(--cyan);
+    font-size: 0.75rem;
+    font-weight: 800;
+    letter-spacing: 3px;
+}
+
+.button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    padding: 13px 21px;
+    border-radius: 10px;
+    font-size: 0.92rem;
+    font-weight: 700;
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease,
+        background 0.25s ease;
+}
+
+.button:hover {
+    transform: translateY(-3px);
+}
+
+.button-primary {
+    color: #111020;
+    background: var(--gradient);
+    background-size: 180% 180%;
+    box-shadow: 0 8px 30px rgba(167, 139, 250, 0.16);
+}
+
+.button-primary:hover {
+    background-position: 100% 50%;
+    box-shadow: 0 12px 35px rgba(103, 232, 249, 0.2);
+}
+
+.button-secondary {
+    color: var(--text);
+    border: 1px solid var(--border);
+    background: rgba(255, 255, 255, 0.025);
+}
+
+.button-secondary:hover {
+    border-color: var(--purple);
+    background: rgba(167, 139, 250, 0.08);
+}
+
+.section {
+    width: min(1120px, calc(100% - 48px));
+    margin: auto;
+    padding: 65px 0;
+}
+
+.section-heading {
+    max-width: 680px;
+    margin-bottom: 35px;
+}
+
+.section-heading h2,
+.cta-section h2 {
+    margin-bottom: 18px;
+    font-size: clamp(2rem, 5vw, 3.3rem);
+    line-height: 1.2;
+    letter-spacing: -1.5px;
+}
+
+.section-heading > p:last-child {
+    max-width: 580px;
+}
+
+
+/* ==========================================
+   4. PAGINA ACASĂ - HERO
+========================================== */
+
+.hero {
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    align-items: center;
+    gap: 45px;
+    width: min(1120px, calc(100% - 48px));
+    min-height: 0;
+    margin: auto;
+    padding: 50px 0;
+}
+
+.status {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    margin-bottom: 25px;
+    padding: 7px 13px;
+    border: 1px solid var(--border);
+    border-radius: 30px;
+    background: rgba(255, 255, 255, 0.025);
+    color: var(--muted);
+    font-size: 0.78rem;
+}
+
+.status-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #4ade80;
+    box-shadow: 0 0 12px #4ade80;
+    animation: status-pulse 2s infinite;
+}
+
+.hero h1 {
+    margin-bottom: 25px;
+    font-size: clamp(2.8rem, 5.5vw, 4.8rem);
+    line-height: 1.08;
+    letter-spacing: -3px;
+}
+
+.hero-description {
+    max-width: 510px;
+    font-size: 1.05rem;
+}
+
+.hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 13px;
+    margin-top: 30px;
+}
+
+.hero-socials {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 22px;
+    margin-top: 35px;
+    font-size: 0.82rem;
+}
+
+.hero-socials > span {
+    color: #74738e;
+    font-size: 0.68rem;
+    letter-spacing: 1px;
+}
+
+.hero-socials a {
+    color: var(--muted);
+    transition: color 0.2s;
+}
+
+.hero-socials a:hover {
+    color: var(--cyan);
+}
+
+
+/* ==========================================
+   5. ILUSTRAȚIA CU COD
+========================================== */
+
+.hero-visual {
+    position: relative;
+    isolation: isolate;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 400px;
+}
+
+.orbit {
+    position: absolute;
+    z-index: -1;
+    border: 1px solid rgba(167, 139, 250, 0.13);
+    border-radius: 50%;
+}
+
+.orbit-one {
+    width: 360px;
+    height: 360px;
+    animation: rotate 35s linear infinite;
+}
+
+.orbit-two {
+    width: 290px;
+    height: 290px;
+    border-color: rgba(103, 232, 249, 0.14);
+    animation: rotate 25s linear infinite reverse;
+}
+
+.code-card {
+    position: relative;
+    z-index: 1;
+    width: min(100%, 400px);
+    border: 1px solid rgba(167, 139, 250, 0.28);
+    border-radius: 17px;
+    background: rgba(18, 18, 34, 0.95);
+    box-shadow: 0 25px 90px rgba(0, 0, 0, 0.4);
+    animation: float 6s ease-in-out infinite;
+}
+
+.code-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 18px;
+    border-bottom: 1px solid var(--border);
+    color: var(--muted);
+    font-size: 0.75rem;
+}
+
+.window-dots {
+    display: flex;
+    gap: 6px;
+}
+
+.window-dots i {
+    display: block;
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: #fb7185;
+}
+
+.window-dots i:nth-child(2) {
+    background: #facc15;
+}
+
+.window-dots i:nth-child(3) {
+    background: #4ade80;
+}
+
+.code-body {
+    padding: 24px;
+    font-family: Consolas, Monaco, monospace;
+    font-size: clamp(0.7rem, 1.5vw, 0.85rem);
+    line-height: 2;
+}
+
+.code-body p {
+    color: #d5d5e9;
+}
+
+.indent {
+    padding-left: 22px;
+}
+
+.code-purple {
+    color: #c4a7ff;
+}
+
+.code-green {
+    color: #86efac;
+}
+
+.code-orange {
+    color: #fdba74;
+}
+
+.cursor {
+    display: inline-block;
+    width: 7px;
+    height: 15px;
+    background: var(--cyan);
+    vertical-align: middle;
+    animation: blink 1s steps(2) infinite;
+}
+
+.floating-tag {
+    position: absolute;
+    z-index: 2;
+    padding: 11px 17px;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    font-size: 0.85rem;
+    font-weight: 800;
+    backdrop-filter: blur(15px);
+    animation: float 5s ease-in-out infinite;
+}
+
+.tag-html {
+    top: 10%;
+    left: -2%;
+    color: #fb923c;
+    background: rgba(251, 146, 60, 0.1);
+}
+
+.tag-css {
+    top: 20%;
+    right: -3%;
+    color: #67e8f9;
+    background: rgba(103, 232, 249, 0.1);
+    animation-delay: -2s;
+}
+
+.tag-js {
+    right: 5%;
+    bottom: 12%;
+    color: #fde047;
+    background: rgba(253, 224, 71, 0.1);
+    animation-delay: -1s;
+}
+
+
+/* ==========================================
+   6. ABILITĂȚI
+========================================== */
+
+.skills-section {
+    padding-top: 45px;
+    padding-bottom: 30px;
+}
+
+.skills-section .section-heading {
+    margin-bottom: 30px;
+}
+
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 18px;
+}
+
+.skill-card {
+    padding: 25px;
+    border: 1px solid var(--border);
+    border-radius: 15px;
+    background: var(--surface);
+    transition: transform 0.3s, border-color 0.3s;
+}
+
+.skill-card:hover {
+    transform: translateY(-7px);
+    border-color: rgba(167, 139, 250, 0.6);
+}
+
+.skill-icon {
+    display: grid;
+    place-items: center;
+    width: 47px;
+    height: 47px;
+    margin-bottom: 20px;
+    border-radius: 12px;
+    font-size: 1.2rem;
+    font-weight: 900;
+}
+
+.html-icon {
+    color: #fb923c;
+    background: rgba(251, 146, 60, 0.12);
+}
+
+.css-icon {
+    color: #67e8f9;
+    background: rgba(103, 232, 249, 0.12);
+}
+
+.js-icon {
+    color: #fde047;
+    background: rgba(253, 224, 71, 0.12);
+}
+
+.git-icon {
+    color: #f0abfc;
+    background: rgba(240, 171, 252, 0.12);
+}
+
+.skill-card h3 {
+    margin-bottom: 6px;
+}
+
+.skill-card p {
+    margin-bottom: 20px;
+    font-size: 0.84rem;
+}
+
+.skill-level {
+    color: var(--cyan);
+    font-size: 0.63rem;
+    font-weight: 800;
+    letter-spacing: 1px;
+}
+
+
+/* ==========================================
+   7. CARDURI PROIECTE
+========================================== */
+
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 22px;
+}
+
+.project-card {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    height: 100%;
+    overflow: hidden;
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    background: var(--surface);
+    transition: transform 0.3s, border-color 0.3s;
+}
+
+.project-card:hover {
+    transform: translateY(-7px);
+    border-color: rgba(103, 232, 249, 0.4);
+}
+
+.project-art {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 205px;
+    overflow: hidden;
+}
+
+.art-one {
+    background:
+        radial-gradient(circle at 70% 20%, #c084fc, transparent 40%),
+        linear-gradient(135deg, #30205a, #171b3b);
+}
+
+.art-two {
+    background:
+        radial-gradient(circle at 30% 80%, #67e8f9, transparent 40%),
+        linear-gradient(135deg, #152c49, #24204b);
+}
+
+.art-three {
+    background:
+        radial-gradient(circle at 80% 30%, #fb7185, transparent 40%),
+        linear-gradient(135deg, #49234f, #24204b);
+}
+
+.art-symbol {
+    position: absolute;
+    top: 16px;
+    left: 18px;
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 1.7rem;
+    font-weight: 900;
+}
+
+.art-label {
+    position: absolute;
+    right: 16px;
+    bottom: 16px;
+    font-size: 0.65rem;
+    font-weight: 800;
+    letter-spacing: 1px;
+}
+
+.mini-window {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    width: 125px;
+    height: 95px;
+    padding: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    border-radius: 12px;
+    background: rgba(10, 10, 20, 0.5);
+    backdrop-filter: blur(8px);
+    transform: rotate(-8deg);
+}
+
+.mini-window > div {
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: #c084fc;
+}
+
+.mini-window > div:nth-child(2) {
+    background: #67e8f9;
+}
+
+.mini-window > div:nth-child(3) {
+    background: #fb7185;
+}
+
+.mini-circle {
+    display: grid;
+    place-items: center;
+    width: 110px;
+    height: 110px;
+    border: 2px solid rgba(255, 255, 255, 0.6);
+    border-radius: 50%;
+    color: white;
+    font-size: 2rem;
+    font-weight: 900;
+    box-shadow: 0 0 45px rgba(103, 232, 249, 0.25);
+}
+
+.mini-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    width: 125px;
+    transform: rotate(5deg);
+}
+
+.mini-layout span {
+    height: 40px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 7px;
+    background: rgba(255, 255, 255, 0.18);
+}
+
+.mini-layout span:first-child {
+    grid-column: span 2;
+    height: 25px;
+}
+
+.project-info {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    padding: 24px;
+}
+
+.project-type {
+    margin-bottom: 10px;
+    color: var(--cyan);
+    font-size: 0.68rem;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+}
+
+.project-info h3 {
+    margin-bottom: 10px;
+    font-size: 1.2rem;
+}
+
+.project-info > p:not(.project-type) {
+    font-size: 0.88rem;
+}
+
+.project-link {
+    margin-top: auto;
+    padding-top: 22px;
+}
+
+.text-link {
+    display: inline-block;
+    margin-top: 20px;
+    color: var(--purple);
+    font-size: 0.86rem;
+    font-weight: 700;
+}
+
+.text-link:hover {
+    color: var(--cyan);
+}
+
+.center-action {
+    margin-top: 35px;
+    text-align: center;
+}
+
+
+/* ==========================================
+   8. SECȚIUNEA FINALĂ CTA
+========================================== */
+
+.cta-section {
+    position: relative;
+    isolation: isolate;
+    width: min(1000px, calc(100% - 48px));
+    margin: 20px auto 50px;
+    padding: 50px 25px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+    border-radius: 24px;
+    background: var(--surface);
+    text-align: center;
+}
+
+.cta-glow {
+    position: absolute;
+    top: -150px;
+    left: calc(50% - 200px);
+    z-index: -1;
+    width: 400px;
+    height: 250px;
+    background: rgba(167, 139, 250, 0.2);
+    filter: blur(80px);
+}
+
+.cta-section h2 {
+    margin-bottom: 20px;
+}
+
+.cta-section > p:not(.eyebrow) {
+    margin-bottom: 28px;
+}
+
+
+/* ==========================================
+   9. PAGINI INTERIOARE
+========================================== */
+
+.page-hero {
+    width: min(1120px, calc(100% - 48px));
+    margin: auto;
+    padding: 65px 0 35px;
+}
+
+.page-hero h1 {
+    margin-bottom: 20px;
+    font-size: clamp(2.5rem, 6vw, 4.3rem);
+    line-height: 1.15;
+    letter-spacing: -2px;
+}
+
+.page-hero > p:not(.eyebrow) {
+    max-width: 680px;
+}
+
+.content-panel {
+    padding: 30px;
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    background: var(--surface);
+}
+
+.content-panel h2,
+.content-panel h3 {
+    margin-bottom: 12px;
+}
+
+.content-panel p + p {
+    margin-top: 15px;
+}
+
+.about-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    gap: 24px;
+}
+
+.info-list {
+    display: grid;
+    gap: 15px;
+    margin-top: 22px;
+}
+
+.info-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+}
+
+.info-bullet {
+    flex-shrink: 0;
+    margin-top: 2px;
+    color: var(--cyan);
+    font-weight: 900;
+    line-height: 1.2;
+}
+
+.info-item h3 {
+    margin-top: 0;
+}
+
+
+/* ==========================================
+   10. DESPRE MINE - EFECT PULSE
+========================================== */
+
+/* Compatibil cu clasele folosite în despre.html */
+
+.about-business-heading .business-pulse-text {
+    display: inline-block;
+    color: var(--purple);
+    background: var(--gradient);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    transform-origin: center;
+    animation: business-title-pulse 2.8s ease-in-out infinite;
+}
+
+@keyframes business-title-pulse {
+    0%, 100% {
+        transform: scale(1);
+        opacity: 1;
+        filter: drop-shadow(0 0 3px rgba(167, 139, 250, 0.25));
+    }
+
+    50% {
+        transform: scale(1.04);
+        opacity: 0.85;
+        filter: drop-shadow(0 0 15px rgba(167, 139, 250, 0.7));
+    }
+}
+
+
+/* ==========================================
+   11. PAGINA PROIECTE
+========================================== */
+
+.projects-section {
+    padding-top: 35px;
+    padding-bottom: 65px;
+}
+
+.project-detail-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    align-items: stretch;
+    gap: 28px;
+}
+
+.project-detail-grid .project-card {
+    min-width: 0;
+    height: 100%;
+}
+
+.project-detail-grid .project-art {
+    position: relative;
+    display: block;
+    width: 100%;
+    min-height: 0;
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+}
+
+.project-detail-grid .project-art img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    transition: transform 0.4s ease;
+}
+
+.project-detail-grid .project-art:hover img {
+    transform: scale(1.05);
+}
+
+.project-detail-grid .project-info {
+    padding: 25px;
+}
+
+.project-detail-grid .project-info > p:not(.project-type) {
+    margin-bottom: 0;
+}
+
+.project-detail-grid .text-link {
+    margin-top: auto;
+    padding-top: 22px;
+}
+
+.project-techs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 18px;
+}
+
+.project-techs span {
+    padding: 4px 9px;
+    border: 1px solid rgba(103, 232, 249, 0.18);
+    border-radius: 6px;
+    background: rgba(103, 232, 249, 0.07);
+    color: var(--cyan);
+    font-size: 0.72rem;
+}
+
+.project-status {
+    position: absolute;
+    left: 18px;
+    bottom: 18px;
+    z-index: 2;
+    padding: 8px 12px;
+    border: 1px solid var(--purple);
+    border-radius: 6px;
+    background: rgba(10, 10, 20, 0.85);
+    color: var(--text);
+    font-size: 0.7rem;
+    font-weight: 800;
+    letter-spacing: 1px;
+}
+
+.project-coming-soon {
+    cursor: default;
+}
+
+.project-disabled {
+    color: var(--muted);
+    cursor: default;
+}
+
+.barbertop-image {
+    position: relative;
+    display: block;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+}
+
+.barbertop-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+}
+
+.barbertop-image:hover img {
+    transform: scale(1.05);
+}
+
+.barbertop-image .art-label {
+    position: absolute;
+    left: 20px;
+    bottom: 20px;
+    z-index: 2;
+    color: white;
+}
+
+
+/* ==========================================
+   12. PAGINA CONTACT
+========================================== */
+
+.contact-grid {
+    display: grid;
+    grid-template-columns: 0.8fr 1.2fr;
+    align-items: start;
+    gap: 24px;
+}
+
+.contact-links {
+    display: grid;
+    gap: 14px;
+    margin-top: 22px;
+}
+
+.contact-link {
+    display: block;
+    padding: 15px;
+    overflow-wrap: anywhere;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.02);
+}
+
+.contact-link:hover {
+    border-color: var(--purple);
+}
+
+.contact-link strong {
+    display: block;
+    margin-bottom: 4px;
+}
+
+.contact-link span {
+    color: var(--muted);
+    font-size: 0.85rem;
+}
+
+.contact-form {
+    display: grid;
+    gap: 10px;
+}
+
+.contact-form label {
+    margin-top: 8px;
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+.contact-form input,
+.contact-form textarea {
+    width: 100%;
+    padding: 13px 14px;
+    border: 1px solid var(--border);
+    border-radius: 9px;
+    outline: none;
+    background: #0d0d1a;
+    color: var(--text);
+    transition: border-color 0.2s;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+    border-color: var(--purple);
+}
+
+.contact-form textarea {
+    min-height: 145px;
+    resize: vertical;
+}
+
+.contact-form .button {
+    margin-top: 15px;
+    border: 0;
+    cursor: pointer;
+}
+
+.form-note {
+    margin-top: 10px;
+    font-size: 0.8rem;
+}
+
+.form-status {
+    min-height: 24px;
+    margin-top: 8px;
+    font-size: 0.9rem;
+}
+
+/* Titlul mai mic și "realitate!" roșu */
+
+.contact-title {
+    max-width: 850px;
+    margin-right: auto;
+    margin-left: auto;
+    font-size: clamp(2rem, 4vw, 3.4rem);
+    line-height: 1.2;
+    letter-spacing: -1px;
+}
+
+.contact-title .contact-red {
+    color: #ff4d5a;
+    -webkit-text-fill-color: #ff4d5a;
+}
+
+/* Spații reduse doar pe Contact */
+
+body:has(#contact-form) .page-hero {
+    min-height: auto;
+    padding-top: 45px;
+    padding-bottom: 25px;
+}
+
+body:has(#contact-form) .section {
+    padding-top: 20px;
+    padding-bottom: 45px;
+}
+
+body:has(#contact-form) .contact-grid,
+body:has(#contact-form) .contact-card,
+body:has(#contact-form) .contact-form,
+body:has(#contact-form) .content-panel {
+    min-height: 0;
+}
+
+body:has(#contact-form) .form-group {
+    margin-bottom: 16px;
+}
+
+
+/* ==========================================
+   13. FOOTER ȘI LOGO
+========================================== */
+
+.footer {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 12px;
+    padding: 30px max(24px, calc((100% - 1120px) / 2));
+    border-top: 1px solid var(--border);
+}
+
+.footer-brand h2 {
+    margin: 0 0 20px;
+    font-size: clamp(2rem, 4vw, 2.8rem);
+    line-height: 1.2;
+    letter-spacing: -1.5px;
+}
+
+.footer-brand .logo {
+    width: fit-content;
+}
+
+.footer .logo img.logo-img,
+.footer .logo img.brand-logo {
+    display: block;
+    width: 170px;
+    height: auto;
+    object-fit: contain;
+}
+
+.footer p {
+    margin: 0;
+    font-size: 0.9rem;
+}
+
+
+/* ==========================================
+   14. ANIMAȚII
+========================================== */
+
+/* Apariție la derularea paginii */
+
+.reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition:
+        opacity 0.7s ease,
+        transform 0.7s ease;
+}
+
+.reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0) rotate(-2deg);
+    }
+
+    50% {
+        transform: translateY(-12px) rotate(0deg);
+    }
+}
+
+@keyframes rotate {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes status-pulse {
+    0%, 100% {
+        opacity: 1;
+        box-shadow: 0 0 12px #4ade80;
+    }
+
+    50% {
+        opacity: 0.55;
+        box-shadow: 0 0 4px #4ade80;
+    }
+}
+
+@keyframes blink {
+    50% {
+        opacity: 0;
+    }
+}
+
+
+/* ==========================================
+   15. SPAȚII COMPACTE - PAGINA ACASĂ
+========================================== */
+
+body:has(.hero) .hero {
+    min-height: auto;
+    padding-top: 45px;
+    padding-bottom: 45px;
+}
+
+body:has(.hero) main > .section {
+    padding-top: 45px;
+    padding-bottom: 45px;
+}
+
+body:has(.hero) .section-heading {
+    margin-bottom: 30px;
+}
+
+body:has(.hero) .cta-section {
+    margin-top: 25px;
+    margin-bottom: 40px;
+    padding-top: 45px;
+    padding-bottom: 45px;
+}
+
+body:has(.hero) main {
+    padding-bottom: 0;
+}
+
+
+/* ==========================================
+   16. RESPONSIVE - TABLETĂ
+========================================== */
+
+@media (max-width: 900px) {
+
+    .hero {
+        grid-template-columns: 1fr;
+        gap: 20px;
+        padding-top: 55px;
+    }
+
+    .hero-content {
+        max-width: 700px;
+    }
+
+    .hero-visual {
+        min-height: 380px;
+    }
+
+    .skills-grid,
+    .projects-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .projects-grid .project-card:last-child {
+        grid-column: 1 / -1;
+    }
+
+    .about-grid,
+    .contact-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+
+/* ==========================================
+   17. RESPONSIVE - TELEFON
+========================================== */
+
+@media (max-width: 700px) {
+
+    .project-detail-grid {
+        grid-template-columns: 1fr;
+        gap: 22px;
+    }
+
+    .project-detail-grid .project-info {
+        padding: 22px;
+    }
+
+    .projects-section {
+        padding-top: 20px;
+        padding-bottom: 50px;
+    }
+}
+
+@media (max-width: 600px) {
+
+    .header {
+        flex-wrap: wrap;
+        padding: 16px 20px;
+    }
+
+    .header a.logo {
+        width: 150px;
+        flex-basis: 150px;
+    }
+
+    .header a.logo img.logo-img,
+    .header a.logo img.brand-logo {
+        width: 150px;
+    }
+
+    .menu-toggle {
+        display: block;
+    }
+
+    .nav {
+        display: none;
+        flex-direction: column;
+        align-items: stretch;
+        width: 100%;
+        gap: 6px;
+        padding-top: 12px;
+    }
+
+    .nav.open {
+        display: flex;
+    }
+
+    .header .nav a {
+        justify-content: flex-start;
+        width: 100%;
+        padding: 11px 14px;
+    }
+
+    .hero {
+        width: calc(100% - 40px);
+        min-height: auto;
+        padding: 30px 0;
+    }
+
+    .hero h1 {
+        font-size: clamp(2.6rem, 12vw, 4rem);
+        letter-spacing: -2px;
+    }
+
+    .hero-socials {
+        gap: 15px;
+    }
+
+    .hero-visual {
+        min-height: 330px;
+        margin: 10px 0;
+    }
+
+    .orbit-one {
+        width: 290px;
+        height: 290px;
+    }
+
+    .orbit-two {
+        width: 235px;
+        height: 235px;
+    }
+
+    .code-body {
+        padding: 17px;
+        font-size: 0.72rem;
+    }
+
+    .tag-html {
+        left: -4px;
+    }
+
+    .tag-css {
+        right: -4px;
+    }
+
+    .section {
+        width: calc(100% - 40px);
+        padding: 40px 0;
+    }
+
+    .skills-section {
+        padding-top: 35px;
+        padding-bottom: 25px;
+    }
+
+    .skills-grid,
+    .projects-grid,
+    .project-detail-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .projects-grid .project-card:last-child {
+        grid-column: auto;
+    }
+
+    .page-hero {
+        width: calc(100% - 40px);
+        padding: 45px 0 25px;
+    }
+
+    .content-panel {
+        padding: 22px;
+    }
+
+    .cta-section {
+        width: calc(100% - 40px);
+        margin-bottom: 35px;
+        padding: 35px 20px;
+    }
+
+    .footer {
+        align-items: flex-start;
+        padding: 25px 20px;
+    }
+
+    .contact-title {
+        font-size: clamp(1.8rem, 7vw, 2.5rem);
+        letter-spacing: -0.5px;
+    }
+
+    body:has(#contact-form) .page-hero {
+        padding-top: 30px;
+        padding-bottom: 15px;
+    }
+
+    body:has(#contact-form) .section {
+        padding-top: 15px;
+        padding-bottom: 30px;
+    }
+
+    body:has(.hero) .hero {
+        padding-top: 25px;
+        padding-bottom: 30px;
+    }
+
+    body:has(.hero) main > .section {
+        padding-top: 30px;
+        padding-bottom: 30px;
+    }
+
+    body:has(.hero) .section-heading {
+        margin-bottom: 22px;
+    }
+
+    body:has(.hero) .cta-section {
+        margin-top: 15px;
+        margin-bottom: 25px;
+        padding: 30px 20px;
+    }
+}
+
+
+/* ==========================================
+   18. ACCESIBILITATE
+========================================== */
+
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+
+    .reveal {
+        opacity: 1;
+        transform: none;
+    }
+
+    .about-business-heading .business-pulse-text {
+        animation: none;
+    }
+}
+/* ==========================================
+   ADR DIGITAL - SELECT SERVICIU
+========================================== */
+
+.contact-form select {
+    width: 100%;
+    padding: 18px 17px;
+
+    background-color: #0d0c19;
+    color: #e5e5ee;
+
+    border: 1px solid #292638;
+    border-radius: 12px;
+
+    font-family: inherit;
+    font-size: inherit;
+    font-weight: 400;
+
+    outline: none;
+    cursor: pointer;
+
+    appearance: none;
+    -webkit-appearance: none;
+
+    /* Săgeată dropdown */
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='none' stroke='%23b8b5c9' stroke-width='2' viewBox='0 0 24 24'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 17px center;
+    background-size: 18px;
+
+    padding-right: 45px;
+
+    transition: border-color 0.25s ease;
+}
+
+.contact-form select:focus {
+    border-color: #7771d9;
+}
+
+.contact-form select option {
+    background-color: #0d0c19;
+    color: #e5e5ee;
+}
+

@@ -1,0 +1,797 @@
+
+<!DOCTYPE html>
+<html lang="ro">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="description"
+        content="Află mai multe despre ADR Digital, serviciile oferite și tehnologiile folosite pentru realizarea website-urilor."
+    >
+
+    <title>Despre mine | ADR Digital</title>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="alternate icon" type="image/png" href="favicon.png">
+
+    <!-- Stilurile principale ale site-ului -->
+    <link rel="stylesheet" href="style.css">
+
+    <!-- JavaScript principal -->
+    <script src="script.js" defer></script>
+
+    <!-- Stiluri specifice paginii Despre mine -->
+    <style>
+
+        /* ==========================================
+           1. TITLUL PAGINII DESPRE MINE
+        ========================================== */
+
+        .about-hero {
+            position: relative;
+            text-align: center;
+            padding-top: 90px;
+            padding-bottom: 65px;
+            overflow: hidden;
+        }
+
+        .about-hero::before {
+            content: "";
+            position: absolute;
+            width: 420px;
+            height: 420px;
+            left: 50%;
+            top: 35%;
+            transform: translate(-50%, -50%);
+            border-radius: 50%;
+            background: radial-gradient(
+                circle,
+                rgba(167, 139, 250, 0.12) 0%,
+                rgba(103, 232, 249, 0.04) 40%,
+                transparent 70%
+            );
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .about-hero > * {
+            position: relative;
+            z-index: 1;
+        }
+
+        .about-hero .eyebrow {
+            margin-bottom: 22px;
+        }
+
+        .about-main-title {
+            max-width: 900px;
+            margin: 0 auto;
+            font-size: clamp(2.6rem, 6vw, 5rem);
+            font-weight: 800;
+            line-height: 1.15;
+            letter-spacing: -2px;
+        }
+
+        .about-main-title .title-line {
+            display: block;
+        }
+
+        /* ==========================================
+           2. EFECT PULSE PENTRU "COD."
+        ========================================== */
+
+        .about-main-title .pulse-text {
+            display: inline-block;
+            color: #a78bfa;
+            background: linear-gradient(
+                110deg,
+                #a78bfa 0%,
+                #67e8f9 50%,
+                #f0abfc 100%
+            );
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+
+            transform-origin: center;
+            animation: about-title-pulse 2.8s ease-in-out infinite;
+            will-change: transform, filter;
+        }
+
+        @keyframes about-title-pulse {
+
+            0%, 100% {
+                transform: scale(1);
+                opacity: 1;
+                filter: drop-shadow(
+                    0 0 3px rgba(167, 139, 250, 0.25)
+                );
+            }
+
+            50% {
+                transform: scale(1.06);
+                opacity: 0.88;
+                filter: drop-shadow(
+                    0 0 18px rgba(167, 139, 250, 0.7)
+                );
+            }
+        }
+
+        .about-hero-description {
+            max-width: 650px;
+            margin: 26px auto 0;
+            color: #a4a3bc;
+            font-size: 1.05rem;
+            line-height: 1.8;
+        }
+
+
+        /* ==========================================
+           3. SECȚIUNEA DESPRE MINE
+        ========================================== */
+
+        .about-details-section {
+            padding-top: 20px;
+        }
+
+        .about-details-section .about-grid {
+            align-items: stretch;
+        }
+
+        .about-details-section .content-panel {
+            height: 100%;
+        }
+
+
+        /* ==========================================
+           4. CARD WEBSITE-URI PERSONALIZATE
+        ========================================== */
+
+        .about-business-panel {
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(167, 139, 250, 0.22);
+            background:
+                radial-gradient(
+                    circle at top left,
+                    rgba(167, 139, 250, 0.12),
+                    transparent 65%
+                ),
+                #121222;
+        }
+
+        .about-business-panel::after {
+            content: "";
+            position: absolute;
+            width: 170px;
+            height: 170px;
+            right: -80px;
+            top: -80px;
+            border-radius: 50%;
+            background: rgba(103, 232, 249, 0.06);
+            filter: blur(25px);
+            pointer-events: none;
+        }
+
+        .about-business-heading {
+            margin: 14px 0 28px;
+            font-size: clamp(1.55rem, 3vw, 2.15rem);
+            line-height: 1.3;
+            font-weight: 750;
+        }
+
+        .about-business-heading .gradient-text {
+            display: inline-block;
+        }
+
+        /* ==========================================
+           5. LISTA DE AFACERI
+        ========================================== */
+
+        .about-business-list {
+            display: grid;
+            gap: 14px;
+        }
+
+        .about-business-list .business-item {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+
+            padding: 17px 20px;
+            border: 1px solid rgba(167, 139, 250, 0.18);
+            border-radius: 14px;
+
+            background: rgba(255, 255, 255, 0.035);
+            color: #f4f3ff;
+
+            font-size: 1.02rem;
+            font-weight: 600;
+            line-height: 1.5;
+
+            transition:
+                transform 0.3s ease,
+                border-color 0.3s ease,
+                background 0.3s ease,
+                box-shadow 0.3s ease;
+        }
+
+        .about-business-list .business-item:hover {
+            transform: translateX(8px);
+            border-color: rgba(103, 232, 249, 0.65);
+            background: rgba(103, 232, 249, 0.07);
+            box-shadow: 0 10px 30px rgba(103, 232, 249, 0.07);
+        }
+
+        /* Simbolurile luminoase */
+
+        .about-business-list .diamond {
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            flex-shrink: 0;
+
+            width: 38px;
+            height: 38px;
+            border-radius: 11px;
+
+            background: rgba(103, 232, 249, 0.09);
+            color: #67e8f9;
+
+            font-size: 1.35rem;
+            line-height: 1;
+
+            text-shadow: 0 0 12px rgba(103, 232, 249, 0.65);
+
+            animation: about-diamond-pulse 2.5s ease-in-out infinite;
+        }
+
+        @keyframes about-diamond-pulse {
+
+            0%, 100% {
+                transform: scale(1);
+                box-shadow: 0 0 0 rgba(103, 232, 249, 0);
+            }
+
+            50% {
+                transform: scale(1.12);
+                box-shadow: 0 0 16px rgba(103, 232, 249, 0.12);
+            }
+        }
+
+        .about-business-list .business-item:nth-child(2) .diamond {
+            animation-delay: 0.3s;
+        }
+
+        .about-business-list .business-item:nth-child(3) .diamond {
+            animation-delay: 0.6s;
+        }
+
+        .about-business-list .business-item:nth-child(4) .diamond {
+            animation-delay: 0.9s;
+        }
+
+
+        /* ==========================================
+           6. CARD "CE MĂ DEFINEȘTE"
+        ========================================== */
+
+        .about-values-panel {
+            border: 1px solid rgba(167, 139, 250, 0.15);
+        }
+
+        .about-values-panel > h2 {
+            margin-bottom: 28px;
+        }
+
+        .about-values-panel .info-item {
+            transition: transform 0.3s ease;
+        }
+
+        .about-values-panel .info-item:hover {
+            transform: translateX(5px);
+        }
+
+        .about-values-panel .info-bullet {
+            color: #a78bfa;
+            text-shadow: 0 0 10px rgba(167, 139, 250, 0.35);
+        }
+
+
+        /* ==========================================
+           7. ANIMAȚII LA DERULARE
+        ========================================== */
+
+        /*
+           Scriptul adaugă clasa .visible.
+           Aceste reguli refac efectul de apariție
+           doar pe pagina Despre mine.
+        */
+
+        @media (prefers-reduced-motion: no-preference) {
+
+            body .reveal {
+                opacity: 0;
+                transform: translateY(24px);
+                transition:
+                    opacity 0.7s ease,
+                    transform 0.7s ease;
+            }
+
+            body .reveal.visible {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+
+        /* ==========================================
+           8. RESPONSIVE - TABLETĂ
+        ========================================== */
+
+        @media (max-width: 900px) {
+
+            .about-hero {
+                padding-top: 65px;
+                padding-bottom: 45px;
+            }
+
+            .about-main-title {
+                letter-spacing: -1.5px;
+            }
+
+            .about-details-section .about-grid {
+                gap: 24px;
+            }
+        }
+
+
+        /* ==========================================
+           9. RESPONSIVE - TELEFON
+        ========================================== */
+
+        @media (max-width: 600px) {
+
+            .about-hero {
+                padding-top: 50px;
+                padding-bottom: 35px;
+            }
+
+            .about-hero::before {
+                width: 280px;
+                height: 280px;
+            }
+
+            .about-main-title {
+                font-size: clamp(2.25rem, 9vw, 3.3rem);
+                line-height: 1.2;
+                letter-spacing: -1px;
+            }
+
+            .about-hero-description {
+                margin-top: 20px;
+                font-size: 0.95rem;
+                line-height: 1.7;
+            }
+
+            .about-business-heading {
+                font-size: 1.55rem;
+            }
+
+            .about-business-list .business-item {
+                gap: 12px;
+                padding: 13px 14px;
+                font-size: 0.95rem;
+            }
+
+            .about-business-list .diamond {
+                width: 34px;
+                height: 34px;
+                font-size: 1.2rem;
+            }
+
+            .about-business-list .business-item:hover {
+                transform: translateX(4px);
+            }
+        }
+
+
+        /* ==========================================
+           10. ACCESIBILITATE
+        ========================================== */
+
+        @media (prefers-reduced-motion: reduce) {
+
+            .about-main-title .pulse-text,
+            .about-business-list .diamond {
+                animation: none;
+            }
+
+            .about-business-list .business-item,
+            .about-values-panel .info-item {
+                transition: none;
+            }
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <!-- =====================================
+         HEADER ȘI MENIU
+    ===================================== -->
+
+    <header class="header">
+
+        <a href="index.html" class="logo">
+            <img
+                src="logo-adr-digital.svg"
+                alt="ADR Digital"
+                class="logo-img"
+            >
+        </a>
+
+        <button
+            class="menu-toggle"
+            type="button"
+            aria-label="Deschide meniul"
+            aria-expanded="false"
+        >
+            ☰
+        </button>
+
+        <nav class="nav" aria-label="Navigare principală">
+
+            <a href="index.html">Acasă</a>
+
+            <a href="despre.html" class="active" aria-current="page">
+                Despre mine
+            </a>
+
+            <a href="proiecte.html">Proiecte</a>
+
+            <a href="contact.html" class="nav-cta">
+                Contact
+            </a>
+
+        </nav>
+
+    </header>
+
+
+    <!-- =====================================
+         CONȚINUT PRINCIPAL
+    ===================================== -->
+
+    <main>
+
+
+        <!-- =====================================
+             1. TITLU CU EFECT PULSE
+        ===================================== -->
+
+        <section class="page-hero about-hero reveal">
+
+            <p class="eyebrow">
+                DESPRE ADR DIGITAL
+            </p>
+
+            <h1 class="about-main-title">
+
+                <span class="title-line">
+                    Experiență unică
+                </span>
+
+                <span class="title-line">
+                    creată în
+                    <span class="pulse-text">cod.</span>
+                </span>
+
+            </h1>
+
+            <p class="about-hero-description">
+                Transform ideile în experiențe digitale moderne,
+                personalizate pentru fiecare afacere.
+            </p>
+
+        </section>
+
+
+        <!-- =====================================
+             2. AFACERI ȘI VALORI
+        ===================================== -->
+
+        <section class="section about-details-section">
+
+            <div class="about-grid">
+
+
+                <!-- WEBSITE-URI PERSONALIZATE -->
+
+                <article class="content-panel about-business-panel reveal">
+
+                    <p class="eyebrow">
+                        SOLUȚII PERSONALIZATE
+                    </p>
+<h2 class="about-business-heading">
+    <span class="business-pulse-text">
+        Website-uri personalizate pentru:
+    </span>
+</h2>
+                    <div class="about-business-list">
+
+                        <div class="business-item">
+                            <span class="diamond" aria-hidden="true">✦</span>
+                            <span>Cafenea</span>
+                        </div>
+
+                        <div class="business-item">
+                            <span class="diamond" aria-hidden="true">✦</span>
+                            <span>Restaurant</span>
+                        </div>
+
+                        <div class="business-item">
+                            <span class="diamond" aria-hidden="true">✦</span>
+                            <span>Magazin online</span>
+                        </div>
+
+                        <div class="business-item">
+                            <span class="diamond" aria-hidden="true">✦</span>
+                            <span>Salon de înfrumusețare</span>
+                        </div>
+
+                    </div>
+
+                </article>
+
+
+                <!-- CE MĂ DEFINEȘTE -->
+
+                <aside class="content-panel about-values-panel reveal">
+
+                    <p class="eyebrow">
+                        CE MĂ DEFINEȘTE
+                    </p>
+
+                    <h2>
+                        Angajament, calitate și seriozitate.
+                    </h2>
+
+                    <div class="info-list">
+
+
+                        <!-- SERIOZITATE -->
+
+                        <div class="info-item">
+
+                            <span class="info-bullet" aria-hidden="true">
+                                ✦
+                            </span>
+
+                            <div>
+
+                                <h3>
+                                    Seriozitate și implicare
+                                </h3>
+
+                                <p>
+                                    Tratez fiecare proiect cu responsabilitate
+                                    și atenție la detalii, de la primele idei
+                                    până la livrarea site-ului.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- DESIGN -->
+
+                        <div class="info-item">
+
+                            <span class="info-bullet" aria-hidden="true">
+                                ✦
+                            </span>
+
+                            <div>
+
+                                <h3>
+                                    Design adaptat afacerii tale
+                                </h3>
+
+                                <p>
+                                    Îmi propun să creez site-uri moderne,
+                                    ușor de navigat și adaptate atât telefoanelor,
+                                    cât și calculatoarelor.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- COMUNICARE -->
+
+                        <div class="info-item">
+
+                            <span class="info-bullet" aria-hidden="true">
+                                ✦
+                            </span>
+
+                            <div>
+
+                                <h3>
+                                    Comunicare transparentă
+                                </h3>
+
+                                <p>
+                                    Discutăm de la început despre cerințe,
+                                    costuri și termenul de livrare, pentru ca
+                                    așteptările să fie clare.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </aside>
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================
+             3. ABILITĂȚI
+        ===================================== -->
+
+        <section class="section">
+
+            <div class="section-heading reveal">
+
+                <p class="eyebrow">
+                    ABILITĂȚI
+                </p>
+
+                <h2>
+                    Ce folosesc pentru
+                    <span class="gradient-text">afacerea ta?</span>
+                </h2>
+
+                <p>
+                    Tehnologiile pe care le folosesc pentru
+                    a construi website-ul tău.
+                </p>
+
+            </div>
+
+
+            <div class="skills-grid">
+
+
+                <!-- HTML -->
+
+                <article class="skill-card reveal">
+
+                    <span class="skill-icon html-icon" aria-hidden="true">
+                        &lt;/&gt;
+                    </span>
+
+                    <h3>HTML</h3>
+
+                    <p>
+                        Structura semantică a paginilor web.
+                    </p>
+
+                </article>
+
+
+                <!-- CSS -->
+
+                <article class="skill-card reveal">
+
+                    <span class="skill-icon css-icon" aria-hidden="true">
+                        ✳
+                    </span>
+
+                    <h3>CSS</h3>
+
+                    <p>
+                        Layout-uri, responsive design și animații.
+                    </p>
+
+                </article>
+
+
+                <!-- JAVASCRIPT -->
+
+                <article class="skill-card reveal">
+
+                    <span class="skill-icon js-icon" aria-hidden="true">
+                        JS
+                    </span>
+
+                    <h3>JavaScript</h3>
+
+                    <p>
+                        Evenimente și funcționalități interactive.
+                    </p>
+
+                </article>
+
+
+                <!-- PERSONALIZARE -->
+
+                <article class="skill-card reveal">
+
+                    <span class="skill-icon git-icon" aria-hidden="true">
+                        ✦
+                    </span>
+
+                    <h3>Personalizare</h3>
+
+                    <p>
+                        Fiecare website este adaptat afacerii tale.
+                    </p>
+
+                </article>
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================
+             4. VEZI PROIECTELE
+        ===================================== -->
+
+        <section class="cta-section reveal">
+
+            <p class="eyebrow">
+                CONTINUĂ EXPLORAREA
+            </p>
+
+            <h2>
+                Vezi
+                <span class="gradient-text">proiectele mele.</span>
+            </h2>
+
+            <p>
+                Descoperă proiectele din portofoliul meu
+                create pentru afaceri reale.
+            </p>
+
+            <a href="proiecte.html" class="button button-primary">
+                Vezi proiectele ↗
+            </a>
+
+        </section>
+
+    </main>
+
+
+    <!-- =====================================
+         FOOTER
+    ===================================== -->
+
+    <footer class="footer">
+
+        <a href="index.html" class="logo">
+            <img
+                src="logo-adr-digital.svg"
+                alt="ADR Digital"
+                class="logo-img"
+            >
+        </a>
+
+    </footer>
+
+</body>
+</html>
